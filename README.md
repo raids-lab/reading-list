@@ -21,6 +21,9 @@ A reading list for model inference systems, including but not limited to related
 - **[ASPLOS 25]** MoE-Lightning: High-Throughput MoE Inference on Memory-constrained GPUs
   - Authors: Shiyi Cao, Shu Liu, Tyler Griggs, Peter Schafhalter, Xiaoxuan Liu, Ying Sheng, Joseph E. Gonzalez, Matei Zaharia, and Ion Stoica
   - [Paper](https://doi.org/10.1145/3669940.3707267), [Code](https://github.com/caoshiyi/artifacts/blob/asplos25)
+- **[ASPLOS 25]** Klotski: Efficient Mixture-of-Expert Inference via Expert-Aware Multi-Batch Pipeline
+  - Authors: Zhiyuan Fang, Yuegui Huang, Zicong Hong, Yufeng Lyu, Wuhui Chen, Yue Yu, Fan Yu, and Zibin Zheng
+  - [Paper](https://doi.org/10.1145/3676641.3716261)
 - **[FAST 25]** Mooncake: Trading More Storage for Less Computation — A KVCache-centric Architecture for Serving LLM Chatbot
   - Authors: Ruoyu Qin and Zheming Li and Weiran He and Jialei Cui and Feng Ren and Mingxing Zhang and Yongwei Wu and Weimin Zheng and Xinran Xu
   - [Paper](https://www.usenix.org/conference/fast25/presentation/qin), [Code](https://github.com/kvcache-ai/Mooncake)
