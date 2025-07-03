@@ -1,9 +1,11 @@
 import argparse
-import bibtexparser
 import pathlib
 import subprocess
 import sys
 from typing import Dict, List, Optional, TextIO
+
+import bibtexparser
+from pylatexenc.latex2text import LatexNodes2Text
 
 # Define a mapping from shortened book titles to their full names.
 # This is used to identify the series of a literature reference based on its booktitle.
@@ -90,7 +92,7 @@ class LiteratureRef:
             ref = cls(
                 date=int(entry.get("year", 0)),
                 series=LiteratureRef.__series_of(entry),
-                title=entry.get("title", "").replace("{", "").replace("}", ""),
+                title=LatexNodes2Text().latex_to_text(entry["title"]),
                 authors=LiteratureRef.__authors_of(entry),
                 link=entry.get("url", ""),
                 code=entry.get("code", None),

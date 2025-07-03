@@ -6,4 +6,5 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "bibtexparser>=1.4.3",
+    "pylatexenc>=2.10",
 ]
