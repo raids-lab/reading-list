@@ -90,7 +90,7 @@ class LiteratureRef:
                 date=int(entry.get("year", 0)),
                 series=LiteratureRef.__series_of(entry),
                 title=entry.get("title", "").replace("{", "").replace("}", ""),
-                authors=entry.get("author", "").split(" and "),
+                authors=LiteratureRef.__authors_of(entry),
                 link=entry.get("url", ""),
                 code=entry.get("code", None),
             )
@@ -98,7 +98,28 @@ class LiteratureRef:
         return references
 
     @classmethod
+    def __authors_of(cls, entry: Dict[str, str]) -> List[str]:
+        """
+        Extracts authors from a BibTeX entry.
+        """
+
+        def reorder_name(name: str) -> str:
+            """
+            Reorders the name from 'Last, First' to 'First Last'.
+            """
+            parts = name.split(", ")
+            if len(parts) == 2:
+                return f"{parts[1]} {parts[0]}"
+            return name
+
+        authors = entry.get("author", "").split(" and ")
+        return [reorder_name(author.strip()) for author in authors]
+
+    @classmethod
     def __series_of(cls, entry: Dict[str, str]) -> str:
+        """
+        Extracts the series from a BibTeX entry.
+        """
         if "booktitle" in entry:
             booktitle = entry["booktitle"]
             for key, value in BOOKTITLE_PATTERN.items():
