@@ -13,6 +13,9 @@ A reading list for model inference systems, including but not limited to related
 *    - Please order the papers by:                                         *
 *      1. publication date.                                                *
 *      2. conference / journal name.                                       *
+*         - If the paper is not published in a conference or journal,      *
+*           e.g. published on arXiv, please place it behind all other      *
+*           conference / journal papers within the same year.              *
 *      3. alphabetical order of the paper title.                           *
 *                                                                          *
 ****************************************************************************
@@ -25,8 +28,11 @@ A reading list for model inference systems, including but not limited to related
   - Authors: Zhiyuan Fang, Yuegui Huang, Zicong Hong, Yufeng Lyu, Wuhui Chen, Yue Yu, Fan Yu, and Zibin Zheng
   - [Paper](https://doi.org/10.1145/3676641.3716261)
 - **[FAST 25]** Mooncake: Trading More Storage for Less Computation — A KVCache-centric Architecture for Serving LLM Chatbot
-  - Authors: Ruoyu Qin and Zheming Li and Weiran He and Jialei Cui and Feng Ren and Mingxing Zhang and Yongwei Wu and Weimin Zheng and Xinran Xu
+  - Authors: Ruoyu Qin, Zheming Li, Weiran He, Jialei Cui, Feng Ren, Mingxing Zhang, Yongwei Wu, Weimin Zheng, and Xinran Xu
   - [Paper](https://www.usenix.org/conference/fast25/presentation/qin), [Code](https://github.com/kvcache-ai/Mooncake)
+- **[arXiv 25]** MegaScale-Infer: Serving Mixture-of-Experts at Scale with Disaggregated Expert Parallelism
+  - Authors: Ruidong Zhu, Ziheng Jiang, Chao Jin, Peng Wu, Cesar A. Stuardo, Dongyang Wang, Xinlei Zhang, Huaping Zhou, Haoran Wei, Yang Cheng, Jianzhe Xiao, Xinyi Zhang, Lingjun Liu, Haibin Lin, Li-Wen Chang, Jianxi Ye, Xiao Yu, Xuanzhe Liu, Xin Jin, and Xin Liu
+  - [Paper](https://doi.org/10.48550/arXiv.2504.02263)
 - **[OSDI 24]** DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving
   - Authors: Yinmin Zhong, Shengyu Liu, Junda Chen, Jianbo Hu, Yibo Zhu, Xuanzhe Liu, Xin Jin, and Hao Zhang
   - [Paper](https://www.usenix.org/conference/osdi24/presentation/zhong-yinmin), [Code](https://github.com/LLMServe/DistServe)
