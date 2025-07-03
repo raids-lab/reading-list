@@ -12,6 +12,7 @@ BOOKTITLE_PATTERN = {
     "FAST": "File and Storage Technologies",
     "OSDI": "Operating Systems Design and Implementation",
     "SOSP": "Symposium on Operating Systems Principles",
+    "ICCAD": "International Conference on Computer-Aided Design",
 }
 
 
