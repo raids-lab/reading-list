@@ -35,7 +35,7 @@ jobs:
 
       - name: Generate Site
         run: |
-          for f in *.bib; do
+          for f in refs/*.bib; do
             uv run main.py --bib-file "$f" --format html --output-file site/$(basename "$f" .bib).html
           done
 

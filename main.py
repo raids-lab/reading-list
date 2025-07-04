@@ -14,7 +14,16 @@ BOOKTITLE_PATTERN = {
     "FAST": "File and Storage Technologies",
     "OSDI": "Operating Systems Design and Implementation",
     "SOSP": "Symposium on Operating Systems Principles",
+    "USENIX ATC": [
+        "Usenix Annual Technical Conference",
+        "USENIX Annual Technical Conference",
+    ],
+    "PLDI": "Programming Language Design and Implementation",
+    "MICRO": "International Symposium on Microarchitecture",
     "ICCAD": "International Conference on Computer-Aided Design",
+    "VEE": "International Conference on Virtual Execution Environments",
+    "MobiSys": "International Conference on Mobile Systems, Applications, and Services",
+    "CGO": "International Symposium on Code Generation and Optimization",
 }
 
 
@@ -89,15 +98,19 @@ class LiteratureRef:
         bib_data = bibtexparser.load(bib)
         references = []
         for entry in bib_data.entries:
-            ref = cls(
-                date=int(entry.get("year", 0)),
-                series=LiteratureRef.__series_of(entry),
-                title=LatexNodes2Text().latex_to_text(entry["title"]),
-                authors=LiteratureRef.__authors_of(entry),
-                link=entry.get("url", ""),
-                code=entry.get("code", None),
-            )
-            references.append(ref)
+            try:
+                ref = cls(
+                    date=int(entry.get("year", 0)),
+                    series=LiteratureRef.__series_of(entry),
+                    title=LatexNodes2Text().latex_to_text(entry["title"]),
+                    authors=LiteratureRef.__authors_of(entry),
+                    link=entry["url"],
+                    code=entry.get("code", None),
+                )
+                references.append(ref)
+            except KeyError as e:
+                raise ValueError(
+                    f"Missing required field in entry: {e}. Entry: {entry}")
         return references
 
     @classmethod
@@ -116,7 +129,7 @@ class LiteratureRef:
             return name
 
         authors = entry.get("author", "").split(" and ")
-        return [reorder_name(author.strip()) for author in authors]
+        return [reorder_name(LatexNodes2Text().latex_to_text(author.strip())) for author in authors]
 
     @classmethod
     def __series_of(cls, entry: Dict[str, str]) -> str:
@@ -126,8 +139,15 @@ class LiteratureRef:
         if "booktitle" in entry:
             booktitle = entry["booktitle"]
             for key, value in BOOKTITLE_PATTERN.items():
-                if value in booktitle:
-                    return key
+                if isinstance(value, list):
+                    for v in value:
+                        if v in booktitle:
+                            return key
+                elif isinstance(value, str):
+                    if value in booktitle:
+                        return key
+                else:
+                    raise ValueError(f"Invalid booktitle pattern: {value}.")
             raise ValueError(
                 f"Unknown booktitle: {booktitle}. Please add it to `BOOKTITLE_PATTERN`."
             )
