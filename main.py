@@ -18,6 +18,10 @@ BOOKTITLE_PATTERN = {
         "Usenix Annual Technical Conference",
         "USENIX Annual Technical Conference",
     ],
+    "EuroSys": [
+        "European Conference on Computer Systems",
+        "EuroSys Conference",
+    ],
     "PLDI": "Programming Language Design and Implementation",
     "MICRO": "International Symposium on Microarchitecture",
     "ICCAD": "International Conference on Computer-Aided Design",
