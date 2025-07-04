@@ -83,10 +83,11 @@ class LiteratureRef:
         if fmt == "text":
             return str(self)
         elif fmt == "html":
-            return f"<strong>[{self.series} {self.date}]</strong> <em>{self.title}</em> by {', '.join(self.authors)}\n" + \
-                f"(<a href='{self.link}'>Link</a>" + \
+            return f"<strong>[{self.series} {self.date}] <em>{self.title}</em></strong><br>" + \
+                f"<ul><li>Authors: {', '.join(self.authors)}</li>" + \
+                f"<li><a href='{self.link}'>Link</a>" + \
                 (f", <a href='{self.code}'>Code</a>" if self.code else "") + \
-                ")"
+                "</ul>"
         else:
             raise ValueError(f"Unsupported format: {fmt}.")
 
