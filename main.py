@@ -232,7 +232,10 @@ def main():
 
     with open(args.bib_file, "r", encoding="utf-8") as bib_file:
         references = LiteratureRef.parse(bib_file)
+
+    # sort and deduplicate references
     references.sort()
+    references = list(dict.fromkeys(references))
 
     # Convert kebab case to title case for the output title
     title = pathlib.Path(args.bib_file).stem.replace("-", " ").title()
